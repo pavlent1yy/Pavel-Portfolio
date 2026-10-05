@@ -15,6 +15,7 @@ export const ui = {
     resume: { label: "Резюме", soon: "Резюме скоро будет здесь" },
     hero: { write: "Написать в Telegram", projects: "Посмотреть проекты" },
     photo: "Тут твоя фотография",
+    age: { one: "год", few: "года", many: "лет", other: "лет" },
     projects: {
       live: "Открыть сайт",
       code: "Код",
@@ -54,6 +55,7 @@ export const ui = {
     resume: { label: "CV", soon: "CV is coming soon" },
     hero: { write: "Message me on Telegram", projects: "See projects" },
     photo: "Your photo goes here",
+    age: { one: "year", few: "years", many: "years", other: "years" },
     projects: {
       live: "Open site",
       code: "Code",

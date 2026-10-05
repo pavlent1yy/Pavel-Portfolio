@@ -30,6 +30,30 @@
   color: var(--text);
 }
 
+.network {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  margin-top: -0.15em;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.network:first-of-type {
+  margin-left: -0.3rem;
+}
+
+.network:hover,
+.network:focus-visible {
+  color: var(--accent);
+}
+
+.network svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
 .dot {
   flex: none;
   width: 8px;

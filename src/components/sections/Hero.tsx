@@ -2,11 +2,18 @@ import { site } from "@/config/site";
 import type { Content } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import type { Ui } from "@/i18n/ui";
-import { TelegramIcon } from "../Icons";
+import { GithubIcon, LinkedinIcon, TelegramIcon, VkIcon } from "../Icons";
 import { Landscape } from "../Landscape";
 import { LocalTime } from "../LocalTime";
 import { T } from "../T";
 import styles from "./Hero.module.css";
+
+const networks = {
+  telegram: { name: "Telegram", Icon: TelegramIcon },
+  vk: { name: "VK", Icon: VkIcon },
+  github: { name: "GitHub", Icon: GithubIcon },
+  linkedin: { name: "LinkedIn", Icon: LinkedinIcon },
+};
 
 type Props = { hero: Content["hero"]; ui: Ui; lang: Locale };
 
@@ -18,6 +25,24 @@ export function Hero({ hero, ui, lang }: Props) {
           <p className={styles.status}>
             <span className={styles.dot} aria-hidden="true" />
             <T v={hero.status} />
+            {site.presence
+              .filter((id) => site.contacts[id].url)
+              .map((id) => {
+                const { name, Icon } = networks[id];
+                return (
+                  <a
+                    key={id}
+                    className={styles.network}
+                    href={site.contacts[id].url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={name}
+                    title={name}
+                  >
+                    <Icon />
+                  </a>
+                );
+              })}
           </p>
           <p>
             <T v={hero.city} />, <LocalTime timeZone={site.timeZone} locale={lang} />

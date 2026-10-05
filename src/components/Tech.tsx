@@ -1,10 +1,17 @@
 import type { CSSProperties } from "react";
 import {
+  siAndroidstudio,
   siApache,
   siApachekafka,
   siApachemaven,
+  siArduino,
+  siC,
+  siClaude,
+  siCplusplus,
   siCss,
   siDocker,
+  siDotnet,
+  siFigma,
   siFlyway,
   siGit,
   siGithubactions,
@@ -13,13 +20,17 @@ import {
   siJavascript,
   siJsonwebtokens,
   siJunit5,
+  siKotlin,
   siKubernetes,
   siLinux,
   siNextdotjs,
+  siOpenapiinitiative,
   siOpenjdk,
+  siPhp,
   siPostgresql,
   siPostman,
   siPython,
+  siRaspberrypi,
   siReact,
   siRedis,
   siSpring,
@@ -30,9 +41,10 @@ import {
   siTelegram,
   siThymeleaf,
   siTypescript,
+  siWordpress,
 } from "simple-icons";
 import type { Text } from "@/content/types";
-import { BracesIcon } from "./Icons";
+import { BracesIcon, GlobeIcon, SparkIcon } from "./Icons";
 import { T } from "./T";
 import styles from "./Tech.module.css";
 
@@ -70,7 +82,37 @@ const icons: Record<string, Icon> = {
   "Apache Kafka": siApachekafka,
   Kubernetes: siKubernetes,
   "GitHub Actions": siGithubactions,
+  "REST API": siOpenapiinitiative,
+  JavaFX: siOpenjdk,
+  Arduino: siArduino,
+  "Raspberry Pi": siRaspberrypi,
+  "Claude Code": siClaude,
+  Kotlin: siKotlin,
+  C: siC,
+  "C++": siCplusplus,
+  "C#": siDotnet,
+  ".Net": siDotnet,
+  "Android-studio": siAndroidstudio,
+  PHP: siPhp,
+  WordPress: siWordpress,
+  Figma: siFigma,
 };
+
+const keywords = Object.keys(icons).sort((a, b) => b.length - a.length);
+
+const escape = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+function findIcon(item: string): Icon | undefined {
+  if (icons[item]) return icons[item];
+  const key = keywords.find((k) => new RegExp(`(^|[^\\p{L}\\d+#.])${escape(k)}($|[^\\p{L}\\d+#])`, "iu").test(item));
+  return key ? icons[key] : undefined;
+}
+
+const generic: [RegExp, typeof BracesIcon][] = [
+  [/AI|LLM|нейросет/i, SparkIcon],
+  [/домен|domain/i, GlobeIcon],
+  [/front-?end|фронт/i, BracesIcon],
+];
 
 function brandColor(hex: string) {
   const [r, g, b] = [0, 2, 4].map((i) => {
@@ -90,7 +132,8 @@ function Badge({ item }: { item: Text }) {
     );
   }
 
-  const icon = icons[item];
+  const icon = findIcon(item);
+  const Fallback = generic.find(([test]) => test.test(item))?.[1] ?? BracesIcon;
   const brand = icon ? brandColor(icon.hex) : undefined;
 
   return (
@@ -100,7 +143,7 @@ function Badge({ item }: { item: Text }) {
           <path d={icon.path} />
         </svg>
       ) : (
-        <BracesIcon className={styles.fallback} />
+        <Fallback className={styles.fallback} />
       )}
       {item}
     </li>
