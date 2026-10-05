@@ -1,0 +1,161 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: var(--header-h);
+}
+
+.name {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 1.6rem;
+  margin-left: auto;
+  font-size: var(--fs-sm);
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.nav .navContact {
+  color: var(--text);
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 38px;
+  padding: 0 0.9rem 0 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--accent) 80%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--accent) 14%, transparent);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.lang:hover {
+  background: color-mix(in oklab, var(--accent) 28%, transparent);
+}
+
+.langIcon {
+  width: 17px;
+  height: 17px;
+  color: var(--accent-strong);
+}
+
+.langShort {
+  display: none;
+}
+
+.theme {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.theme:hover {
+  border-color: var(--text-muted);
+}
+
+.themeIcon {
+  position: absolute;
+  inset: 0;
+  width: 18px;
+  height: 18px;
+  margin: auto;
+  opacity: 0;
+  transform: scale(0.6) rotate(-20deg);
+  transition:
+    opacity 0.18s,
+    transform 0.25s var(--ease-out);
+}
+
+:global([data-theme="light"]) .moon,
+:global([data-theme="dark"]) .sun {
+  opacity: 1;
+  transform: none;
+}
+
+.theme:hover .sun,
+.theme:hover .moon,
+.theme:focus-visible .sun,
+.theme:focus-visible .moon {
+  opacity: 0;
+  transform: scale(0.6) rotate(20deg);
+}
+
+:global([data-theme="light"]) .theme:hover .bulbOn,
+:global([data-theme="light"]) .theme:focus-visible .bulbOn,
+:global([data-theme="dark"]) .theme:hover .bulbOff,
+:global([data-theme="dark"]) .theme:focus-visible .bulbOff {
+  opacity: 1;
+  transform: none;
+}
+
+.bulbOn {
+  color: var(--accent-strong);
+}
+
+@media (max-width: 1080px) {
+  .nav {
+    display: none;
+  }
+
+  .tools {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .inner {
+    gap: 1rem;
+  }
+
+  .langFull {
+    display: none;
+  }
+
+  .langShort {
+    display: inline;
+  }
+}

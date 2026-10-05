@@ -1,0 +1,88 @@
+.switch {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-sunken);
+}
+
+.switch button {
+  position: relative;
+  z-index: 1;
+  min-height: 38px;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.switch button[aria-pressed="true"] {
+  color: var(--accent-ink);
+}
+
+.thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 9px;
+  background: var(--accent);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.thumb[data-mode="tech"] {
+  transform: translateX(100%);
+}
+
+.typed {
+  display: grid;
+  gap: 1em;
+  max-width: 40em;
+  font-size: var(--fs-md);
+  line-height: 1.55;
+}
+
+.paragraph {
+  display: grid;
+}
+
+.ghost,
+.live {
+  grid-area: 1 / 1;
+}
+
+.ghost {
+  visibility: hidden;
+}
+
+.caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  margin-left: 0.08em;
+  vertical-align: -0.15em;
+  background: var(--accent-strong);
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.tech {
+  font-family: var(--font-mono), monospace;
+  font-size: 1rem;
+  line-height: 1.7;
+}

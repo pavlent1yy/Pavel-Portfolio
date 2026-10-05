@@ -1,0 +1,46 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.tip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  z-index: 30;
+  width: max-content;
+  max-width: 220px;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius-s);
+  background: var(--text);
+  color: var(--bg);
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -4px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s var(--ease-out);
+}
+
+.tip:empty {
+  padding: 0;
+}
+
+.open {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 600px) {
+  .compact {
+    width: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .compact .label {
+    display: none;
+  }
+}

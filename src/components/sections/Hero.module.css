@@ -1,0 +1,75 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--header-h));
+  padding-top: clamp(2rem, 1rem + 3vw, 3.5rem);
+  overflow: clip;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 1.5rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  margin-bottom: clamp(2rem, 1rem + 3.5vw, 4rem);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text);
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 0.45em;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+.headline {
+  max-width: 15ch;
+  font-size: var(--fs-display);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  animation: rise 0.8s var(--ease-out) both;
+}
+
+.lead {
+  max-width: 34em;
+  margin-top: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: var(--text-muted);
+  animation: rise 0.8s var(--ease-out) 0.12s both;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+  animation: rise 0.8s var(--ease-out) 0.2s both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}

@@ -1,0 +1,134 @@
+.landscape {
+  position: relative;
+  height: clamp(250px, 36vw, 500px);
+  margin-top: auto;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.stars {
+  fill: var(--text);
+  opacity: calc(var(--stars) * 0.55);
+  transition: opacity 0.4s;
+}
+
+.sun,
+.moon {
+  transition: opacity 0.4s;
+}
+
+.moon {
+  opacity: 0;
+}
+
+:global([data-theme="dark"]) .sun {
+  opacity: 0;
+}
+
+:global([data-theme="dark"]) .moon {
+  opacity: 1;
+}
+
+.clouds {
+  fill: var(--cloud);
+}
+
+.birds,
+.tower,
+.wires,
+.branches {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.birds {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.tower {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.waves {
+  stroke: var(--ink-soft);
+  stroke-width: 2.5;
+}
+
+.led {
+  fill: var(--led);
+  stroke: none;
+}
+
+:global([data-theme="dark"]) .led,
+:global([data-theme="dark"]) .screen {
+  filter: drop-shadow(0 0 4px var(--led));
+}
+
+.wires {
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.cable {
+  stroke-width: 1.6;
+}
+
+.branches {
+  stroke: var(--ink-strong);
+  stroke-width: 4;
+}
+
+.branches path:first-child {
+  stroke-width: 7;
+}
+
+.commits {
+  fill: var(--led);
+  stroke: var(--ink-strong);
+  stroke-width: 3;
+}
+
+.person {
+  fill: var(--ink-strong);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.limb,
+.arm,
+.laptopBase,
+.screen {
+  fill: none;
+}
+
+.limb {
+  stroke: var(--ink-strong);
+  stroke-width: 7;
+}
+
+.arm {
+  stroke: var(--ink-strong);
+  stroke-width: 5;
+}
+
+.laptopBase {
+  stroke: var(--ink);
+  stroke-width: 3.5;
+}
+
+.screen {
+  stroke: var(--led);
+  stroke-width: 3.5;
+}
+
+.svg .note {
+  font-size: 30px;
+  max-width: none;
+}

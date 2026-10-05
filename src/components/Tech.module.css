@@ -1,0 +1,67 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.34rem 0.65rem 0.34rem 0.55rem;
+  border: 1px solid var(--chip-line);
+  border-radius: var(--radius-s);
+  background: var(--chip);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  transition: border-color 0.2s;
+}
+
+.badge:hover {
+  border-color: color-mix(in oklab, var(--brand, var(--accent)) 55%, var(--chip-line));
+}
+
+.logo,
+.fallback {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  transition:
+    fill 0.2s,
+    stroke 0.2s;
+}
+
+.logo {
+  fill: var(--text-muted);
+}
+
+.badge:hover .logo {
+  fill: var(--brand, var(--accent-strong));
+}
+
+.fallback {
+  color: var(--text-muted);
+}
+
+.dashed .badge {
+  border-style: dashed;
+  border-color: color-mix(in oklab, var(--accent-strong) 55%, var(--chip-line));
+  background: transparent;
+}
+
+.sm .badge {
+  padding: 0.26rem 0.55rem 0.26rem 0.45rem;
+  font-size: 0.8125rem;
+}
+
+.sm .logo,
+.sm .fallback {
+  width: 13px;
+  height: 13px;
+}
+
+.badge :global(.todo) {
+  font-weight: 400;
+}

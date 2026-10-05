@@ -1,0 +1,81 @@
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  max-width: 22rem;
+  font-family: var(--font-hand);
+  font-size: 2.1rem;
+  line-height: 1.05;
+  color: var(--accent-strong);
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+
+.text {
+  padding-top: 0.9rem;
+}
+
+.arrow {
+  flex: none;
+  width: 64px;
+  height: 40px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.left .arrow {
+  transform: rotate(-28deg);
+}
+
+.down-left .arrow {
+  transform: scaleY(-1);
+}
+
+.down-left .text {
+  padding-top: 0;
+}
+
+.down-right {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.down-right .arrow {
+  margin-top: 1.1em;
+  transform: scale(-1, -1);
+}
+
+.down-right .text {
+  padding-top: 0;
+}
+
+.animated .arrow path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 0.7s var(--ease-out) 0.65s forwards;
+}
+
+.animated .arrow path + path {
+  animation-delay: 1.2s;
+  animation-duration: 0.3s;
+}
+
+.animated .text {
+  animation: appear 0.6s ease 0.9s both;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}

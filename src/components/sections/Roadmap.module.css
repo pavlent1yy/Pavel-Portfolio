@@ -1,0 +1,100 @@
+.intro {
+  max-width: 38em;
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.milestone {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.year {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.items {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.itemTitle {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.itemText {
+  margin-top: 0.3rem;
+  color: var(--text-muted);
+}
+
+.note {
+  margin-top: -0.25rem;
+  font-size: 1.85rem;
+}
+
+.next {
+  border-top-style: dashed;
+}
+
+.next .year {
+  color: var(--accent-strong);
+}
+
+.next .items {
+  gap: 0.6rem;
+}
+
+.next .itemText {
+  margin: 0;
+}
+
+.skills {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: clamp(3rem, 2.5rem + 2vw, 4.5rem);
+}
+
+.skillsTitle {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 2rem;
+}
+
+.groupTitle {
+  margin-bottom: 0.85rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1100px) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .milestone {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+}
