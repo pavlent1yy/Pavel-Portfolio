@@ -42,7 +42,6 @@ export type Content = {
   };
   projects: {
     intro: Text;
-    featured: string;
     items: Project[];
     note: Text;
     page: { intro: Text; note: Text };

@@ -7,6 +7,7 @@ import { ExternalIcon } from "../Icons";
 import { Section } from "../Section";
 import { T } from "../T";
 import { TechList } from "../Tech";
+import { ProjectCarousel, type Slide } from "./ProjectCarousel";
 import styles from "./Projects.module.css";
 
 type Props = { projects: Content["projects"]; ui: Ui; lang: Locale };
@@ -34,9 +35,37 @@ function Links({ project, ui, lang }: { project: Project; ui: Ui; lang: Locale }
 }
 
 export function Projects({ projects, ui, lang }: Props) {
-  const featured = projects.items.find((p) => p.slug === projects.featured) ?? projects.items[0];
-  const rest = projects.items.filter((p) => p !== featured);
-  const cover = featured.shots.find((shot) => shot.src);
+  const slides: Slide[] = projects.items.map((project) => {
+    const cover = project.shots.find((shot) => shot.src);
+    return {
+      slug: project.slug,
+      head: (
+        <>
+          <span className={styles.year}>{project.year}</span>
+          <span className={styles.slideName}>{project.name}</span>
+          <span className={styles.kind}>
+            <T v={project.kind} />
+          </span>
+        </>
+      ),
+      body: (
+        <div className={`${styles.featured} ${cover?.src ? "" : styles.noShot}`}>
+          <div className={styles.featuredText}>
+            <p className={styles.summary}>
+              <T v={project.summary} />
+            </p>
+            <TechList items={project.stack} size="sm" />
+            <Links project={project} ui={ui} lang={lang} />
+          </div>
+          {cover?.src && (
+            <figure className={styles.shot}>
+              <Image src={cover.src} alt={project.name} fill sizes="(max-width: 860px) 100vw, 640px" unoptimized />
+            </figure>
+          )}
+        </div>
+      ),
+    };
+  });
 
   return (
     <Section id="projects" title={ui.nav.projects} layout="stack" zone="laptop">
@@ -44,45 +73,7 @@ export function Projects({ projects, ui, lang }: Props) {
         <T v={projects.intro} />
       </p>
 
-      <article className={styles.featured}>
-        <div className={styles.featuredText}>
-          <div className={styles.featuredHead}>
-            <h3 className={styles.featuredName}>{featured.name}</h3>
-            <span className={styles.year}>{featured.year}</span>
-          </div>
-          <p className={styles.kind}>
-            <T v={featured.kind} />
-          </p>
-          <p className={styles.summary}>
-            <T v={featured.summary} />
-          </p>
-          <TechList items={featured.stack} size="sm" />
-          <Links project={featured} ui={ui} lang={lang} />
-        </div>
-        <figure className={styles.shot}>
-          {cover?.src ? (
-            <Image src={cover.src} alt={featured.name} fill sizes="(max-width: 860px) 100vw, 640px" unoptimized />
-          ) : (
-            <figcaption className="todo">{ui.projects.shot}</figcaption>
-          )}
-        </figure>
-      </article>
-
-      <ul className={styles.list}>
-        {rest.map((project) => (
-          <li key={project.slug} className={styles.row}>
-            <span className={styles.year}>{project.year}</span>
-            <div className={styles.rowMain}>
-              <h3 className={styles.rowName}>{project.name}</h3>
-              <p className={styles.rowSummary}>
-                <T v={project.summary} />
-              </p>
-              <TechList items={project.stack} size="sm" />
-            </div>
-            <Links project={project} ui={ui} lang={lang} />
-          </li>
-        ))}
-      </ul>
+      <ProjectCarousel slides={slides} />
 
       <div className={styles.footer}>
         <a className="btn btn-primary" href={`/${lang}/projects`}>

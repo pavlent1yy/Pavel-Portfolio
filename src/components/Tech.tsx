@@ -110,7 +110,7 @@ function findIcon(item: string): Icon | undefined {
 
 const generic: [RegExp, typeof BracesIcon][] = [
   [/AI|LLM|нейросет/i, SparkIcon],
-  [/домен|domain/i, GlobeIcon],
+  [/домен|domain|jsoup/i, GlobeIcon],
   [/front-?end|фронт/i, BracesIcon],
 ];
 
