@@ -5,6 +5,7 @@ import { site } from "@/config/site";
 import { plain } from "@/content/types";
 import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "../globals.css";
 
 const onest = Onest({
@@ -50,6 +51,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
     >
       <body>
         <div hidden dangerouslySetInnerHTML={{ __html: `<script>${themeScript}</script>` }} />
+        <SmoothScroll />
         {children}
       </body>
     </html>

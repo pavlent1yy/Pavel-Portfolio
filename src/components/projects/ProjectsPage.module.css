@@ -199,3 +199,11 @@
     margin-left: 0;
   }
 }
+
+.outro {
+  max-width: 38em;
+  padding-block: clamp(2.5rem, 2rem + 2vw, 4rem);
+  color: var(--text-muted);
+  font-size: var(--fs-md);
+  line-height: 1.55;
+}

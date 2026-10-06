@@ -1,3 +1,4 @@
+import { site } from "@/config/site";
 import Image from "next/image";
 import type { Content, Project } from "@/content/types";
 import type { Locale } from "@/i18n/config";
@@ -110,6 +111,12 @@ export function ProjectsPage({ projects, ui, lang }: { projects: Content["projec
         {projects.items.map((project) => (
           <Article key={project.slug} project={project} ui={ui} />
         ))}
+        <p className={styles.outro}>
+          <T v={projects.page.outro} />{" "}
+          <a href={site.contacts.github.url} target="_blank" rel="noreferrer">
+            github.com/{site.contacts.github.handle}
+          </a>
+        </p>
       </div>
     </>
   );

@@ -44,7 +44,7 @@ export type Content = {
     intro: Text;
     items: Project[];
     note: Text;
-    page: { intro: Text; note: Text };
+    page: { intro: Text; note: Text; outro: Text };
   };
   roadmap: {
     intro: Text;
