@@ -164,9 +164,17 @@
   background: var(--bg-sunken);
 }
 
+.imageLink {
+  width: fit-content;
+  max-width: 100%;
+}
+
 .imageLink img {
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: min(80svh, 720px);
 }
 
 .placeholder {

@@ -59,7 +59,7 @@ export function Projects({ projects, ui, lang }: Props) {
           </div>
           {cover?.src && (
             <figure className={styles.shot}>
-              <Image src={cover.src} alt={project.name} fill sizes="(max-width: 860px) 100vw, 640px" unoptimized />
+              <Image src={cover.src} alt={project.name} fill sizes="(max-width: 860px) 100vw, 640px" />
             </figure>
           )}
         </div>

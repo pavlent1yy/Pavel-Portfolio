@@ -5,15 +5,20 @@ import { Header } from "@/components/Header";
 import { Mascot } from "@/components/Mascot";
 import { ModeProvider } from "@/components/projects/Mode";
 import { ProjectsPage } from "@/components/projects/ProjectsPage";
-import { site } from "@/config/site";
-import { hasLocale } from "@/i18n/config";
+import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/projects">): Promise<Metadata> {
   const { lang } = await params;
   if (!hasLocale(lang)) return {};
   const { ui } = getDictionary(lang);
-  return { title: `${ui.projects.title} | ${site.name[lang]}` };
+  return {
+    title: ui.projects.title,
+    alternates: {
+      canonical: `/${lang}/projects`,
+      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/projects`])),
+    },
+  };
 }
 
 export default async function Page({ params }: PageProps<"/[lang]/projects">) {

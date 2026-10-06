@@ -77,3 +77,7 @@ Next.js 16 (App Router, React 19, React Compiler), TypeScript, CSS Modules бе�
 - Иконки соцсетей в hero: `site.presence` + `site.contacts[id].url`; пустой url — иконка скрыта. Живой онлайн-статус Telegram отложен.
 - Карусель проектов на главной (`sections/ProjectCarousel.tsx`): порядок из `projects.items`, 5 с на карточку, таймер — CSS-анимация полоски прогресса; пауза при наведении/фокусе и вне экрана, клик выключает автопрокрутку, при reduced motion автопрокрутки нет.
 - Иконки шильдиков (`Tech.tsx`): точное совпадение, затем поиск ключевого слова в строке, затем общие иконки (`generic`).
+- Скрипт темы лежит в `src/config/theme.ts` и используется в `[lang]/layout.tsx` и `app/global-not-found.tsx` (404 для несуществующих путей, флаг `experimental.globalNotFound`).
+- SEO: `metadataBase` из `site.url` (на Vercel `VERCEL_PROJECT_PRODUCTION_URL`), hreflang в `generateMetadata`, `app/sitemap.ts`, `app/robots.ts`, OG-картинка `[lang]/opengraph-image.tsx` (шрифт Onest из `@fontsource/onest`).
+- Список открытых задач по сайту: `TODO.md`.
+- Навигация до 1080 px: бургер `MobileNav` в шапке (ссылки те же, что в `nav`). Маскот показывается только на ПК: `(min-width: 1081px) and (hover: hover)`, иначе `Mascot` возвращает `null` (фото не грузятся).

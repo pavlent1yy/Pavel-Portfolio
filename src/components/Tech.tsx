@@ -92,7 +92,7 @@ const icons: Record<string, Icon> = {
   "C++": siCplusplus,
   "C#": siDotnet,
   ".Net": siDotnet,
-  "Android-studio": siAndroidstudio,
+  "Android Studio": siAndroidstudio,
   PHP: siPhp,
   WordPress: siWordpress,
   Figma: siFigma,

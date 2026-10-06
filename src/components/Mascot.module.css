@@ -89,21 +89,3 @@
     transform: translateY(4px) scale(0.94);
   }
 }
-
-@media (max-width: 600px) {
-  .wrap {
-    right: 12px;
-    bottom: 12px;
-  }
-
-  .mascot {
-    width: 76px;
-    height: 76px;
-    border-radius: 18px;
-  }
-
-  .sign {
-    right: 26px;
-    font-size: 1.2rem;
-  }
-}

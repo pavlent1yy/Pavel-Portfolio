@@ -57,7 +57,6 @@ function Article({ project, ui }: { project: Project; ui: Ui }) {
                     height={shot.height}
                     alt=""
                     sizes="(max-width: 860px) 100vw, 560px"
-                    unoptimized
                     loading="lazy"
                   />
                 </a>

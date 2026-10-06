@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { preload } from "react-dom";
 import { mascotPhotos, type Pose } from "@/config/mascot";
 import type { Text } from "@/content/types";
@@ -10,7 +10,24 @@ import { T } from "./T";
 
 type CueDetail = { pose: Pose; ms?: number };
 
-export function Mascot({ sign, hideLabel }: { sign: Text; hideLabel: string }) {
+const desktopQuery = "(min-width: 1081px) and (hover: hover)";
+
+const subscribeDesktop = (onChange: () => void) => {
+  const query = window.matchMedia(desktopQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+
+export function Mascot(props: { sign: Text; hideLabel: string }) {
+  const desktop = useSyncExternalStore(
+    subscribeDesktop,
+    () => window.matchMedia(desktopQuery).matches,
+    () => false,
+  );
+  return desktop ? <DesktopMascot {...props} /> : null;
+}
+
+function DesktopMascot({ sign, hideLabel }: { sign: Text; hideLabel: string }) {
   const [zone, setZone] = useState<Pose>("idle");
   const [cue, setCue] = useState<Pose | null>(null);
   const [hover, setHover] = useState<Pose | null>(null);

@@ -136,9 +136,100 @@
   color: var(--accent-strong);
 }
 
+.menu {
+  position: relative;
+  display: none;
+}
+
+.menuButton {
+  display: grid;
+  place-items: center;
+}
+
+.burger,
+.burger::before,
+.burger::after {
+  display: block;
+  width: 16px;
+  height: 1.8px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 0.25s var(--ease-out), background-color 0.15s;
+}
+
+.burger {
+  position: relative;
+}
+
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.burger::before {
+  top: -5px;
+}
+
+.burger::after {
+  top: 5px;
+}
+
+.menuOpen .burger {
+  background: transparent;
+}
+
+.menuOpen .burger::before {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.menuOpen .burger::after {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.menuPanel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  display: grid;
+  min-width: 220px;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--bg-raised);
+  box-shadow: 0 12px 32px -12px color-mix(in oklab, var(--text) 30%, transparent);
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  transition: opacity 0.2s, transform 0.2s var(--ease-out), visibility 0.2s;
+}
+
+.menuPanelOpen {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.menuPanel a {
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-s);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.menuPanel a:hover,
+.menuPanel a:focus-visible {
+  background: color-mix(in oklab, var(--accent) 16%, transparent);
+}
+
 @media (max-width: 1080px) {
   .nav {
     display: none;
+  }
+
+  .menu {
+    display: block;
   }
 
   .tools {

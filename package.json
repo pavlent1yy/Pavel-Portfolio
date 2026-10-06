@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "lenis": "^1.3.26",
     "next": "16.3.8",
     "react": "19.2.8",
@@ -16,6 +17,7 @@
     "simple-icons": "^16.34.0"
   },
   "devDependencies": {
+    "@fontsource/onest": "^5.3.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

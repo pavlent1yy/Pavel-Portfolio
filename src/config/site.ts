@@ -3,6 +3,9 @@ import type { LogoVariant } from "@/components/Logo";
 export const site = {
   name: { ru: "Павел Хухарев", en: "Pavel Khuharev" },
   logo: { ru: "braces", en: "xyxar" } as Record<"ru" | "en", LogoVariant>,
+  url: process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000",
   timeZone: "Europe/Moscow",
   birthDate: "2007-08-15",
   resume: "",
