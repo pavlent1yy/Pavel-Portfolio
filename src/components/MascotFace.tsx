@@ -1,11 +1,13 @@
 import type { Pose } from "@/config/mascot";
 
-const SKIN = "#ecc9ad";
-const SKIN_EDGE = "#c99f86";
+const SKIN = "#f1d5c2";
+const SKIN_EDGE = "#d2aa94";
 const INK = "#3b2a26";
-const HAIR = "#513833";
+const HAIR = "#7b604d";
 const PAPER = "#f8f3ef";
 const BROWN = "#866554";
+const SILVER = "#c3c8cd";
+const TEE = "#ffffff";
 
 const line = { fill: "none", stroke: INK, strokeWidth: 2.4, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
 const sleeve = { fill: "none", stroke: "var(--accent)", strokeWidth: 10, strokeLinecap: "round" as const };
@@ -145,11 +147,13 @@ export function MascotFace({ pose }: { pose: Pose }) {
   return (
     <svg viewBox="0 0 120 120" aria-hidden="true">
       <path d="M18 122C20 98 38 88 60 88S100 98 102 122Z" fill="var(--accent)" />
-      <rect x="53" y="74" width="14" height="16" rx="4" fill={SKIN} />
-      <circle cx="35" cy="58" r="4.5" fill={SKIN} />
-      <circle cx="85" cy="58" r="4.5" fill={SKIN} />
-      <circle cx="60" cy="56" r="25" fill={SKIN} />
-      <path d="M35 54C34 36 46 29 60 29C75 29 86 37 85 54C81 45 73 41 63 42C52 43 43 41 35 54Z" fill={HAIR} />
+      <path d="M50 88H70L60 102Z" fill={TEE} />
+      <rect x="54" y="76" width="12" height="14" rx="4" fill={SKIN} />
+      <circle cx="38" cy="59" r="4.3" fill={SKIN} />
+      <circle cx="82" cy="59" r="4.3" fill={SKIN} />
+      <circle cx="82.5" cy="64.5" r="1.7" fill="none" stroke={SILVER} strokeWidth="1.4" />
+      <path d="M39 50C39 37 47 31 60 31S81 37 81 50V63C81 71 76 79 67 84Q60 87 53 84C44 79 39 71 39 63Z" fill={SKIN} />
+      <path d="M37 53C35 34 47 26 60 26C73 26 85 34 83 53C80 43 72 37 60 37C48 37 40 43 37 53Z" fill={HAIR} />
       <Features pose={pose} />
     </svg>
   );

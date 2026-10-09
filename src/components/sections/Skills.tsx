@@ -7,7 +7,7 @@ import styles from "./Roadmap.module.css";
 
 export function Skills({ skills, ui }: { skills: Content["roadmap"]["skills"]; ui: Ui }) {
   return (
-    <Section id="skills" title={ui.roadmap.skills}>
+    <Section id="skills" title={ui.roadmap.skills} zone="book">
       <div className={styles.skills}>
         <div className={styles.group}>
           <h3 className={styles.groupTitle}>{ui.roadmap.strong}</h3>

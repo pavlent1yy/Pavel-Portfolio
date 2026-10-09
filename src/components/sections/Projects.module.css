@@ -30,7 +30,7 @@
 
 .slideHead {
   display: grid;
-  grid-template-columns: 4rem minmax(0, auto) minmax(0, 1fr);
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
   align-items: baseline;
   gap: 0.25rem clamp(1rem, 2.5vw, 2rem);
   width: 100%;
@@ -146,6 +146,10 @@
   gap: 1.1rem;
 }
 
+.featuredText .year {
+  margin-bottom: -0.6rem;
+}
+
 .summary {
   font-size: var(--fs-md);
   line-height: 1.5;
@@ -214,15 +218,6 @@
   .shot {
     min-height: 0;
     order: -1;
-  }
-
-  .slideHead {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .slideHead .year {
-    grid-column: 2;
-    grid-row: 1;
   }
 
   .kind {

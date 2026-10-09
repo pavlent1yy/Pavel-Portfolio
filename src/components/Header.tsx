@@ -13,8 +13,9 @@ const sections = ["about", "services", "projects", "faq", "roadmap"] as const;
 type Props = { lang: Locale; ui: Ui; path?: string };
 
 export function Header({ lang, ui, path = "" }: Props) {
+  const href = (id: (typeof sections)[number]) => (id === "projects" ? `/${lang}/projects` : `/${lang}#${id}`);
   const links = [
-    ...sections.map((id) => ({ href: `/${lang}#${id}`, label: ui.nav[id] })),
+    ...sections.map((id) => ({ href: href(id), label: ui.nav[id] })),
     { href: `/${lang}#contact`, label: ui.nav.contact },
   ];
 
@@ -26,7 +27,7 @@ export function Header({ lang, ui, path = "" }: Props) {
         </a>
         <nav className={styles.nav} aria-label={ui.navLabel}>
           {sections.map((id) => (
-            <a key={id} href={`/${lang}#${id}`}>
+            <a key={id} href={href(id)}>
               {ui.nav[id]}
             </a>
           ))}

@@ -41,7 +41,6 @@ export function Projects({ projects, ui, lang }: Props) {
       slug: project.slug,
       head: (
         <>
-          <span className={styles.year}>{project.year}</span>
           <span className={styles.slideName}>{project.name}</span>
           <span className={styles.kind}>
             <T v={project.kind} />
@@ -51,6 +50,7 @@ export function Projects({ projects, ui, lang }: Props) {
       body: (
         <div className={`${styles.featured} ${cover?.src ? "" : styles.noShot}`}>
           <div className={styles.featuredText}>
+            <span className={styles.year}>{project.year}</span>
             <p className={styles.summary}>
               <T v={project.summary} />
             </p>
