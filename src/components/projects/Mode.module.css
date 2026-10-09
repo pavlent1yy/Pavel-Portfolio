@@ -52,24 +52,15 @@
   line-height: 1.55;
 }
 
-.paragraph {
-  display: grid;
-}
-
-.ghost,
-.live {
-  grid-area: 1 / 1;
-}
-
-.ghost {
-  visibility: hidden;
+.rest {
+  color: transparent;
 }
 
 .caret {
   display: inline-block;
   width: 0.5em;
   height: 1.05em;
-  margin-left: 0.08em;
+  margin-right: -0.5em;
   vertical-align: -0.15em;
   background: var(--accent-strong);
   animation: blink 0.8s steps(1) infinite;

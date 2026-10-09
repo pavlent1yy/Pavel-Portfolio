@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { site } from "@/config/site";
-import { defaultLocale, hasLocale, locales } from "@/i18n/config";
+import { defaultLocale, enabledLocales, hasLocale } from "@/i18n/config";
 import { ui } from "@/i18n/ui";
 
 export const alt = site.name.ru;
@@ -10,7 +10,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
+  return enabledLocales.map((lang) => ({ lang }));
 }
 
 const fonts = [

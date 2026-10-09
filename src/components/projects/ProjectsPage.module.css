@@ -215,3 +215,82 @@
   font-size: var(--fs-md);
   line-height: 1.55;
 }
+
+.sideTitle {
+  padding-top: clamp(3rem, 2.5rem + 3vw, 5rem);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  scroll-margin-top: calc(var(--header-h) + 64px);
+}
+
+.compact {
+  padding-block: clamp(2rem, 1.5rem + 2vw, 3rem);
+}
+
+.compact .name {
+  font-size: var(--fs-lg);
+}
+
+.compact .gallery {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.compact .imageLink img {
+  max-height: 220px;
+}
+
+.steps {
+  max-width: 40em;
+  margin-top: 2rem;
+}
+
+.stepsTitle {
+  margin-bottom: 0.85rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.stepList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--bg-raised);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.stepLabel {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.credit {
+  margin-top: 1.25rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.credit a {
+  color: var(--accent-strong);
+}
+
+@media (max-width: 640px) {
+  .stepList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

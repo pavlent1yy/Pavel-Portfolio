@@ -7,12 +7,12 @@ import { HandNote } from "../HandNote";
 import { ChevronLeftIcon, ExternalIcon } from "../Icons";
 import { T } from "../T";
 import { TechList } from "../Tech";
-import { ModeSwitch, Typed } from "./Mode";
+import { HumanOnly, ModeSwitch, Typed } from "./Mode";
 import styles from "./ProjectsPage.module.css";
 
 function Article({ project, ui }: { project: Project; ui: Ui }) {
   return (
-    <article id={project.slug} className={styles.article}>
+    <article id={project.slug} className={`${styles.article} ${project.side ? styles.compact : ""}`}>
       <header className={styles.head}>
         <div>
           <h2 className={styles.name}>{project.name}</h2>
@@ -38,7 +38,32 @@ function Article({ project, ui }: { project: Project; ui: Ui }) {
       </header>
 
       <div className={styles.body}>
-        <Typed human={project.human} tech={project.tech} />
+        <div>
+          <Typed human={project.human} tech={project.tech} />
+          {project.steps && (
+            <HumanOnly>
+              <div className={styles.steps}>
+                <h3 className={styles.stepsTitle}>{ui.projects.steps}</h3>
+                <ol className={styles.stepList}>
+                  {(["task", "solution", "result"] as const).map((key) => (
+                    <li key={key} className={styles.step}>
+                      <span className={styles.stepLabel}>{ui.projects[key]}</span>
+                      <T v={project.steps![key]} />
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </HumanOnly>
+          )}
+          {project.credit && (
+            <p className={styles.credit}>
+              <T v={project.credit.text} />{" "}
+              <a href={project.credit.url} target="_blank" rel="noreferrer">
+                {project.credit.handle}
+              </a>
+            </p>
+          )}
+        </div>
         <aside className={styles.stack}>
           <h3 className={styles.stackTitle}>{ui.projects.stack}</h3>
           <TechList items={project.stack} size="sm" />
@@ -77,6 +102,9 @@ function Article({ project, ui }: { project: Project; ui: Ui }) {
 }
 
 export function ProjectsPage({ projects, ui, lang }: { projects: Content["projects"]; ui: Ui; lang: Locale }) {
+  const main = projects.items.filter((project) => !project.side);
+  const side = projects.items.filter((project) => project.side);
+
   return (
     <>
       <div className={`container ${styles.intro}`}>
@@ -97,7 +125,7 @@ export function ProjectsPage({ projects, ui, lang }: { projects: Content["projec
         <div className={`container ${styles.toolbarInner}`}>
           <ModeSwitch label={ui.projects.mode} human={ui.projects.human} tech={ui.projects.tech} />
           <nav className={styles.index} aria-label={ui.projects.index}>
-            {projects.items.map((project) => (
+            {[...main, ...side].map((project) => (
               <a key={project.slug} href={`#${project.slug}`}>
                 {project.name}
               </a>
@@ -107,7 +135,13 @@ export function ProjectsPage({ projects, ui, lang }: { projects: Content["projec
       </div>
 
       <div className="container">
-        {projects.items.map((project) => (
+        {main.map((project) => (
+          <Article key={project.slug} project={project} ui={ui} />
+        ))}
+        <h2 id="side" className={styles.sideTitle}>
+          {ui.projects.side}
+        </h2>
+        {side.map((project) => (
           <Article key={project.slug} project={project} ui={ui} />
         ))}
         <p className={styles.outro}>

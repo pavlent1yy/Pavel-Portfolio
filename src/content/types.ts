@@ -22,7 +22,21 @@ export type Project = {
   human: Text[];
   tech: Text[];
   shots: Shot[];
+  side?: boolean;
+  steps?: { task: Text; solution: Text; result: Text };
+  credit?: { text: Text; url: string; handle: string };
 };
+
+export type Service = {
+  title: Text;
+  text: Text;
+  includes: Text[];
+  price: Text;
+  time: Text;
+  cases: { slug: string; study?: boolean }[];
+};
+
+export type SkillGroup = { title: Text; items: Text[] };
 
 export type Milestone = {
   year: string;
@@ -40,6 +54,7 @@ export type Content = {
     photo?: string;
     principles: { title: Text; text: Text }[];
   };
+  services: Service[];
   projects: {
     intro: Text;
     items: Project[];
@@ -50,7 +65,7 @@ export type Content = {
     intro: Text;
     timeline: Milestone[];
     next: Text[];
-    skills: { strong: Text[]; learning: Text[]; side: Text[] };
+    skills: { strong: SkillGroup[]; learning: Text[]; side: Text[] };
   };
   faq: { clients: Question[]; employers: Question[] };
   contact: { headline: Text; text: Text; note: Text };

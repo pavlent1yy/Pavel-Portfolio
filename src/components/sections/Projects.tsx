@@ -35,7 +35,7 @@ function Links({ project, ui, lang }: { project: Project; ui: Ui; lang: Locale }
 }
 
 export function Projects({ projects, ui, lang }: Props) {
-  const slides: Slide[] = projects.items.map((project) => {
+  const slides: Slide[] = projects.items.filter((project) => !project.side).map((project) => {
     const cover = project.shots.find((shot) => shot.src);
     return {
       slug: project.slug,
@@ -78,6 +78,9 @@ export function Projects({ projects, ui, lang }: Props) {
       <div className={styles.footer}>
         <a className="btn btn-primary" href={`/${lang}/projects`}>
           {ui.projects.all}
+        </a>
+        <a className={styles.link} href={`/${lang}/projects#side`}>
+          {ui.projects.sideLink}
         </a>
         <HandNote text={projects.note} arrow="left" />
       </div>

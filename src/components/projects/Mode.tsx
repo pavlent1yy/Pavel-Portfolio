@@ -80,22 +80,24 @@ export function Typed({ human, tech }: { human: Text[]; tech: Text[] }) {
         const full = raw(item);
         const start = starts[i];
         const shown = full.slice(0, Math.max(0, budget - start));
+        const rest = full.slice(shown.length);
         const caret = typing && budget >= start && budget < start + lengths[i];
         const wrap = (text: string) =>
           typeof item === "string" ? text : <span className="todo">{text}</span>;
 
         return (
-          <p key={`${mode}-${i}`} className={styles.paragraph}>
-            <span className={styles.ghost} aria-hidden="true">
-              {wrap(full)}
-            </span>
-            <span className={styles.live}>
-              {shown && wrap(shown)}
-              {caret && <span className={styles.caret} aria-hidden="true" />}
-            </span>
+          <p key={`${mode}-${i}`}>
+            {shown && wrap(shown)}
+            {caret && <span className={styles.caret} aria-hidden="true" />}
+            {rest && <span className={styles.rest}>{wrap(rest)}</span>}
           </p>
         );
       })}
     </div>
   );
+}
+
+export function HumanOnly({ children }: { children: ReactNode }) {
+  const { mode } = use(ModeContext);
+  return mode === "human" ? children : null;
 }

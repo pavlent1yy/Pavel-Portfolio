@@ -43,6 +43,7 @@ Next.js 16 (App Router, React 19, React Compiler), TypeScript, CSS Modules бе�
 
 - Пути `/ru` и `/en`. `proxy.ts` редиректит пути без префикса по порядку: cookie `lang`, затем гео-заголовок (`x-vercel-ip-country` / `cf-ipcountry`: СНГ → ru, иначе en), затем первый язык из `Accept-Language`, по умолчанию ru.
 - Кнопка переключения в шапке (`LangSwitch`) пишет cookie `lang`, сохраняет текущую страницу и якорь.
+- Сейчас английский выключен: `enabledLocales = ["ru"]` в `src/i18n/config.ts`, `/en/...` и пути без префикса редиректятся (307) на `/ru/...`, переключатель языка скрыт, `/en` не собирается. Включить обратно: `enabledLocales = ["ru", "en"]`.
 
 ## Тема
 

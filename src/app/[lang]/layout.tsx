@@ -3,7 +3,7 @@ import { JetBrains_Mono, Onest } from "next/font/google";
 import { notFound } from "next/navigation";
 import { site } from "@/config/site";
 import { plain } from "@/content/types";
-import { hasLocale, locales } from "@/i18n/config";
+import { enabledLocales, hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { Analytics } from "@vercel/analytics/next";
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -26,7 +26,7 @@ const mono = JetBrains_Mono({
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
+  return enabledLocales.map((lang) => ({ lang }));
 }
 
 export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Promise<Metadata> {
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     description,
     alternates: {
       canonical: `/${lang}`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+      languages: Object.fromEntries(enabledLocales.map((l) => [l, `/${l}`])),
     },
     openGraph: { type: "website", locale: lang, title, description, siteName: site.name[lang] },
   };

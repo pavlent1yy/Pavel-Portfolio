@@ -1,5 +1,5 @@
 import { site } from "@/config/site";
-import { otherLocale, type Locale } from "@/i18n/config";
+import { enabledLocales, otherLocale, type Locale } from "@/i18n/config";
 import type { Ui } from "@/i18n/ui";
 import styles from "./Header.module.css";
 import { Logo } from "./Logo";
@@ -8,7 +8,7 @@ import { LangSwitch } from "./LangSwitch";
 import { ResumeButton } from "./ResumeButton";
 import { ThemeToggle } from "./ThemeToggle";
 
-const sections = ["about", "projects", "roadmap", "faq"] as const;
+const sections = ["about", "services", "projects", "faq", "roadmap"] as const;
 
 type Props = { lang: Locale; ui: Ui; path?: string };
 
@@ -35,8 +35,8 @@ export function Header({ lang, ui, path = "" }: Props) {
           </a>
         </nav>
         <div className={styles.tools}>
-          <ResumeButton label={ui.resume.label} soon={ui.resume.soon} compact />
-          <LangSwitch target={otherLocale(lang)} path={path} {...ui.langSwitch} />
+          {site.resume && <ResumeButton label={ui.resume.label} soon={ui.resume.soon} compact />}
+          {enabledLocales.length > 1 && <LangSwitch target={otherLocale(lang)} path={path} {...ui.langSwitch} />}
           <ThemeToggle label={ui.theme} />
           <MobileNav items={links} label={ui.menu} />
         </div>

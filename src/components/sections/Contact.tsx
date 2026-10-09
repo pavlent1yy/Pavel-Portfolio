@@ -40,11 +40,13 @@ export function Contact({ contact, ui }: { contact: Content["contact"]; ui: Ui }
               {github.handle}
             </a>
           </li>
-          <li>
-            <ResumeButton label={ui.resume.label} soon={ui.resume.soon} />
-          </li>
+          {site.resume && (
+            <li>
+              <ResumeButton label={ui.resume.label} soon={ui.resume.soon} />
+            </li>
+          )}
         </ul>
-        <HandNote text={contact.note} arrow="left" className={styles.note} />
+        {site.resume && <HandNote text={contact.note} arrow="left" className={styles.note} />}
       </div>
     </Section>
   );
