@@ -14,13 +14,14 @@ export function Services({ services, extra, projects, ui, lang }: Props) {
 
   return (
     <Section id="services" title={ui.services.title}>
-      <ul className={styles.list}>
+      <ul>
         {services.map((service, i) => (
           <li key={i} className={styles.item}>
-            <div className={styles.head}>
+            <div className={styles.row}>
               <h3 className={styles.title}>
                 <T v={service.title} />
               </h3>
+              <span className={styles.dots} aria-hidden="true" />
               <p className={styles.price}>
                 <T v={service.price} />
               </p>
@@ -28,35 +29,23 @@ export function Services({ services, extra, projects, ui, lang }: Props) {
             <p className={styles.text}>
               <T v={service.text} />
             </p>
-            <ul className={styles.includes} aria-label={ui.services.includes}>
-              {service.includes.map((item, j) => (
-                <li key={j}>
-                  <T v={item} />
-                </li>
-              ))}
-            </ul>
-            <dl className={styles.facts}>
-              <div>
-                <dt>{ui.services.time}</dt>
-                <dd>
-                  <T v={service.time} />
-                </dd>
-              </div>
+            <p className={styles.meta}>
+              <span>
+                {ui.services.time}: <T v={service.time} />
+              </span>
               {service.cases.length > 0 && (
-                <div>
-                  <dt>{ui.services.case}</dt>
-                  <dd>
-                    {service.cases.map((item, j) => (
-                      <span key={item.slug}>
-                        {j > 0 && ", "}
-                        <a href={`/${lang}/projects#${item.slug}`}>{name(item.slug)}</a>
-                        {item.study && <span className={styles.study}> ({ui.services.study})</span>}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
+                <span>
+                  {ui.services.case}:{" "}
+                  {service.cases.map((item, j) => (
+                    <span key={item.slug}>
+                      {j > 0 && ", "}
+                      <a href={`/${lang}/projects#${item.slug}`}>{name(item.slug)}</a>
+                      {item.study && ` (${ui.services.study})`}
+                    </span>
+                  ))}
+                </span>
               )}
-            </dl>
+            </p>
           </li>
         ))}
       </ul>
