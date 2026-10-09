@@ -24,7 +24,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
       <main>
         <Hero hero={content.hero} ui={ui} lang={lang} />
         <About about={content.about} ui={ui} />
-        <Services services={content.services} projects={content.projects.items} ui={ui} lang={lang} />
+        <Services services={content.services} extra={content.extraServices} projects={content.projects.items} ui={ui} lang={lang} />
         <Projects projects={content.projects} ui={ui} lang={lang} />
         <Skills skills={content.roadmap.skills} ui={ui} />
         <Faq faq={content.faq} ui={ui} />

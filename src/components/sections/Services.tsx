@@ -7,9 +7,9 @@ import { Section } from "../Section";
 import { T } from "../T";
 import styles from "./Services.module.css";
 
-type Props = { services: Content["services"]; projects: Content["projects"]["items"]; ui: Ui; lang: Locale };
+type Props = { services: Content["services"]; extra: Content["extraServices"]; projects: Content["projects"]["items"]; ui: Ui; lang: Locale };
 
-export function Services({ services, projects, ui, lang }: Props) {
+export function Services({ services, extra, projects, ui, lang }: Props) {
   const name = (slug: string) => projects.find((project) => project.slug === slug)?.name ?? slug;
 
   return (
@@ -17,50 +17,69 @@ export function Services({ services, projects, ui, lang }: Props) {
       <ul className={styles.list}>
         {services.map((service, i) => (
           <li key={i} className={styles.item}>
-            <h3 className={styles.title}>
-              <T v={service.title} />
-            </h3>
+            <div className={styles.head}>
+              <h3 className={styles.title}>
+                <T v={service.title} />
+              </h3>
+              <p className={styles.price}>
+                <T v={service.price} />
+              </p>
+            </div>
             <p className={styles.text}>
               <T v={service.text} />
             </p>
-            <p className={styles.includes}>
-              <span className={styles.label}>{ui.services.includes}: </span>
+            <ul className={styles.includes} aria-label={ui.services.includes}>
               {service.includes.map((item, j) => (
-                <span key={j}>
-                  {j > 0 && ", "}
+                <li key={j}>
                   <T v={item} />
-                </span>
+                </li>
               ))}
-            </p>
+            </ul>
             <dl className={styles.facts}>
-              <div>
-                <dt>{ui.services.price}</dt>
-                <dd>
-                  <T v={service.price} />
-                </dd>
-              </div>
               <div>
                 <dt>{ui.services.time}</dt>
                 <dd>
                   <T v={service.time} />
                 </dd>
               </div>
-              <div>
-                <dt>{ui.services.case}</dt>
-                <dd>
-                  {service.cases.map((item, j) => (
-                    <span key={item.slug}>
-                      {j > 0 && ", "}
-                      <a href={`/${lang}/projects#${item.slug}`}>{name(item.slug)}</a>
-                      {item.study && <span className={styles.study}> ({ui.services.study})</span>}
-                    </span>
-                  ))}
-                </dd>
-              </div>
+              {service.cases.length > 0 && (
+                <div>
+                  <dt>{ui.services.case}</dt>
+                  <dd>
+                    {service.cases.map((item, j) => (
+                      <span key={item.slug}>
+                        {j > 0 && ", "}
+                        <a href={`/${lang}/projects#${item.slug}`}>{name(item.slug)}</a>
+                        {item.study && <span className={styles.study}> ({ui.services.study})</span>}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+              )}
             </dl>
           </li>
         ))}
       </ul>
+      <div className={styles.extra}>
+        <h3 className={styles.extraTitle}>
+          <T v={extra.title} />
+        </h3>
+        <ul className={styles.extraList}>
+          {extra.items.map((item, i) => (
+            <li key={i}>
+              <span>
+                <T v={item.name} />
+              </span>
+              <span className={styles.extraPrice}>
+                <T v={item.price} />
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.extraNote}>
+          <T v={extra.note} />
+        </p>
+      </div>
       <div className={styles.other}>
         <p>{ui.services.other}</p>
         <a className="btn btn-ghost btn-small" href={site.contacts.telegram.url} target="_blank" rel="noreferrer">

@@ -55,6 +55,7 @@ export type Content = {
     principles: { title: Text; text: Text }[];
   };
   services: Service[];
+  extraServices: { title: Text; items: { name: Text; price: Text }[]; note: Text };
   projects: {
     intro: Text;
     items: Project[];

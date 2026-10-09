@@ -1,44 +1,63 @@
 .list {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(1.5rem, 3vw, 3rem);
 }
 
 .item {
-  display: grid;
-  gap: 0.6rem;
-  padding-block: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-block: 1.5rem 1.75rem;
   border-top: 1px solid var(--line);
 }
 
-.item:first-child {
-  border-top: 0;
-  padding-top: 0;
+.head {
+  display: grid;
+  gap: 0.35rem;
 }
 
 .title {
-  font-size: var(--fs-lg);
-  font-weight: 550;
+  font-size: var(--fs-md);
+  font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.price {
+  color: var(--accent-strong);
+  font-size: var(--fs-lg);
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .text {
-  max-width: 40em;
-}
-
-.includes {
-  max-width: 40em;
   color: var(--text-muted);
 }
 
-.label {
-  font-weight: 600;
+.includes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.includes li {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--chip-line);
+  border-radius: 999px;
+  background: var(--chip);
+  font-size: var(--fs-sm);
 }
 
 .facts {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 2rem;
-  margin-top: 0.3rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
   font-size: var(--fs-sm);
 }
 
@@ -64,9 +83,48 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1.5rem;
-  max-width: 40em;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   padding: 1rem 1.25rem;
   border: 1px dashed var(--line);
   border-radius: var(--radius-m);
+}
+
+@media (max-width: 1100px) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.extra {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.extraTitle {
+  margin-bottom: 0.5rem;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.extraList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+.extraPrice {
+  flex: none;
+  color: var(--accent-strong);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.extraNote {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
 }
