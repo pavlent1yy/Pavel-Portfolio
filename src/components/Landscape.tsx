@@ -24,7 +24,7 @@ export function Landscape({ note }: { note: Text }) {
     <div className={styles.landscape}>
       <svg
         className={styles.svg}
-        viewBox="0 0 1600 560"
+        viewBox="0 -70 1600 630"
         preserveAspectRatio="xMidYMax slice"
         role="img"
         aria-hidden="true"

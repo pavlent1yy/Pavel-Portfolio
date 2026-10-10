@@ -15,6 +15,20 @@ const networks = {
   linkedin: { name: "LinkedIn", Icon: LinkedinIcon },
 };
 
+function Highlighted({ text, words }: { text: string; words: string[] }) {
+  const escaped = words.map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  if (escaped.length === 0) return text;
+  return text.split(new RegExp(`(${escaped.join("|")})`)).map((part, i) =>
+    words.includes(part) ? (
+      <span key={i} className={styles.mark}>
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
+
 type Props = { hero: Content["hero"]; ui: Ui; lang: Locale };
 
 export function Hero({ hero, ui, lang }: Props) {
@@ -51,10 +65,13 @@ export function Hero({ hero, ui, lang }: Props) {
 
         <h1 className={styles.headline}>
           <T v={hero.headline} />
+          <span className={styles.role}>
+            <T v={hero.role} />
+          </span>
         </h1>
 
         <p className={styles.lead}>
-          <T v={hero.lead} />
+          {typeof hero.lead === "string" ? <Highlighted text={hero.lead} words={hero.highlights} /> : <T v={hero.lead} />}
         </p>
 
         <div className={styles.actions}>

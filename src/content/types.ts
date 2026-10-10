@@ -48,7 +48,7 @@ export type Question = { q: Text; a: Text };
 
 export type Content = {
   meta: { description: Text };
-  hero: { status: Text; city: Text; headline: Text; lead: Text; note: Text };
+  hero: { status: Text; city: Text; headline: Text; role: Text; lead: Text; highlights: string[]; note: Text };
   about: {
     text: Text[];
     photo?: string;

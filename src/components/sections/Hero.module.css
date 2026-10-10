@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   min-height: calc(100svh - var(--header-h));
-  padding-top: clamp(2rem, 1rem + 3vw, 3.5rem);
+  padding-top: clamp(2.25rem, 1.25rem + 3.5vw, 4.25rem);
   overflow: clip;
 }
 
 .content {
   position: relative;
   z-index: 1;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .meta {
@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.75rem 2rem;
-  margin-bottom: clamp(2rem, 1rem + 3.5vw, 4rem);
+  margin-bottom: clamp(2.25rem, 1.25rem + 4vw, 4.75rem);
   font-size: var(--fs-sm);
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
@@ -65,7 +65,6 @@
 }
 
 .headline {
-  max-width: 15ch;
   font-size: var(--fs-display);
   font-weight: 650;
   line-height: 1;
@@ -74,9 +73,26 @@
   animation: rise 0.8s var(--ease-out) both;
 }
 
+.role {
+  display: block;
+  margin-top: 0.15em;
+  color: var(--text-muted);
+  font-size: 0.55em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.mark {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.2em;
+}
+
 .lead {
   max-width: 34em;
-  margin-top: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  margin-top: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
   font-size: var(--fs-md);
   line-height: 1.5;
   color: var(--text-muted);
@@ -87,7 +103,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+  margin-top: clamp(2rem, 1.5rem + 1.75vw, 3rem);
   animation: rise 0.8s var(--ease-out) 0.2s both;
 }
 

@@ -1,6 +1,6 @@
 .landscape {
   position: relative;
-  height: clamp(250px, 36vw, 500px);
+  height: clamp(285px, 40vw, 570px);
   margin-top: auto;
 }
 
