@@ -6,6 +6,7 @@ import { FlIcon, FreelanceIcon, GithubIcon, KworkIcon, LinkedinIcon, TelegramIco
 import { Landscape } from "../Landscape";
 import { LocalTime } from "../LocalTime";
 import { T } from "../T";
+import { PresenceStatus } from "./PresenceStatus";
 import styles from "./Hero.module.css";
 
 const networks = {
@@ -39,28 +40,30 @@ export function Hero({ hero, ui, lang }: Props) {
     <section id="top" className={styles.hero}>
       <div className={`container ${styles.content}`}>
         <div className={styles.meta}>
-          <p className={styles.status}>
+          <div className={styles.status}>
             <span className={styles.dot} aria-hidden="true" />
-            <T v={hero.status} />
-            {site.presence
-              .filter((id) => site.contacts[id].url)
-              .map((id) => {
-                const { name, Icon } = networks[id];
-                return (
-                  <a
-                    key={id}
-                    className={styles.network}
-                    href={site.contacts[id].url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={name}
-                    title={name}
-                  >
-                    <Icon />
-                  </a>
-                );
-              })}
-          </p>
+            <PresenceStatus label={ui.onlineOn}>
+              <T v={hero.status} />
+              {site.presence
+                .filter((id) => site.contacts[id].url)
+                .map((id) => {
+                  const { name, Icon } = networks[id];
+                  return (
+                    <a
+                      key={id}
+                      className={styles.network}
+                      href={site.contacts[id].url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={name}
+                      title={name}
+                    >
+                      <Icon />
+                    </a>
+                  );
+                })}
+            </PresenceStatus>
+          </div>
           <p>
             <T v={hero.city} />, <LocalTime timeZone={site.timeZone} locale={lang} />
           </p>

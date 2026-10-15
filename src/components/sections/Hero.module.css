@@ -54,6 +54,40 @@
   height: 1.1em;
 }
 
+.onlineBox {
+  position: relative;
+}
+
+.onlineList {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.online {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.online:hover,
+.online:focus-visible {
+  color: var(--accent);
+}
+
+.online svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
 .dot {
   flex: none;
   width: 8px;
@@ -111,5 +145,28 @@
   from {
     opacity: 0;
     transform: translateY(14px);
+  }
+}
+
+.offline {
+  display: none;
+}
+
+.pending {
+  display: contents;
+  visibility: hidden;
+}
+
+@media (max-width: 640px) {
+  .offline {
+    display: contents;
+  }
+
+  .pending {
+    visibility: visible;
+  }
+
+  .onlineBox {
+    display: none;
   }
 }
