@@ -24,7 +24,7 @@ function Article({ project, ui }: { project: Project; ui: Ui }) {
           <span className={styles.year}>{project.year}</span>
           {project.live && (
             <a className="btn btn-ghost btn-small" href={project.live} target="_blank" rel="noreferrer">
-              {ui.projects.live}
+              {project.live.startsWith("https://t.me/") ? ui.projects.bot : ui.projects.live}
               <ExternalIcon />
             </a>
           )}
@@ -134,7 +134,7 @@ export function ProjectsPage({ projects, ui, lang }: { projects: Content["projec
         </div>
       </div>
 
-      <div className="container">
+      <div className={`container ${styles.list}`}>
         {main.map((project) => (
           <Article key={project.slug} project={project} ui={ui} />
         ))}

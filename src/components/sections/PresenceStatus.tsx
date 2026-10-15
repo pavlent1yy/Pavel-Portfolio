@@ -26,12 +26,12 @@ export function PresenceStatus({
   }, []);
 
   if (online === null) return <span className={styles.pending}>{children}</span>;
-  if (online.length === 0) return children;
+  if (online.length === 0) return <span className={styles.appear}>{children}</span>;
 
   return (
     <>
       <span className={styles.offline}>{children}</span>
-      <div className={styles.onlineBox}>
+      <div className={`${styles.onlineBox} ${styles.appear}`}>
         {label}
         <ul className={styles.onlineList}>
           {online.map((id) => {

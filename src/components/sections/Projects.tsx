@@ -20,7 +20,7 @@ function Links({ project, ui, lang }: { project: Project; ui: Ui; lang: Locale }
       </a>
       {project.live && (
         <a className={styles.link} href={project.live} target="_blank" rel="noreferrer">
-          {ui.projects.live}
+          {project.live.startsWith("https://t.me/") ? ui.projects.bot : ui.projects.live}
           <ExternalIcon />
         </a>
       )}

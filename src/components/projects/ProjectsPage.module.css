@@ -12,6 +12,7 @@
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s;
+  animation: rise 0.4s var(--ease-out) 0s both;
 }
 
 .back:hover {
@@ -29,6 +30,7 @@
   font-weight: 650;
   line-height: 1;
   letter-spacing: -0.035em;
+  animation: rise 0.4s var(--ease-out) 0.04s both;
 }
 
 .lead {
@@ -37,6 +39,7 @@
   align-items: flex-end;
   gap: 1rem 3rem;
   margin-top: 1.5rem;
+  animation: rise 0.4s var(--ease-out) 0.08s both;
 }
 
 .lead p {
@@ -54,6 +57,7 @@
   background: color-mix(in oklab, var(--bg) 88%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  animation: rise 0.4s var(--ease-out) 0.12s both;
 }
 
 .toolbarInner {
@@ -292,5 +296,16 @@
 @media (max-width: 640px) {
   .stepList {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.list {
+  animation: rise 0.4s var(--ease-out) 0.16s both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
 }

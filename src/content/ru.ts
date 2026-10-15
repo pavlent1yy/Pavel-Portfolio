@@ -109,7 +109,7 @@ export const ru: Content = {
         slug: "gradinator",
         name: "Gradinator",
         year: 2026,
-        kind: "Продукт в альфа-версии. Им уже пользуются студенты колледжа",
+        kind: "Продукт в бета-версии. Им уже пользуются студенты колледжа",
         summary: 
           "Сервис расписания для колледжа. Больше никаких excel-файлов и ручной сверки с заменами: выбираете группу и сразу видите актуальное расписание, которое обновляется само.",
         stack: ["Java", "Spring Boot", "Spring Security", "PostgreSQL", "Flyway", "Apache POI", "Jsoup", "JWT", "Next.js", "TypeScript", "Docker"],
@@ -142,10 +142,11 @@ export const ru: Content = {
         slug: "gradinator-bot",
         name: "Gradinator Bot",
         year: 2026,
-        kind: "Исходный код открыт",
+        kind: "Бета-версия. Исходный код открыт",
         summary: "Аналог Gradinator в Telegram",
         stack: ["Python", "aiogram", "SQLite", "Docker"],
         repo: "https://github.com/pavlent1yy/gradinator_bot",
+        live: "https://t.me/gradinator_bot",
         human: [
           "По сути, тот же Gradinator, что и на сайте, только внутри Telegram. Не нужно открывать сайт, просто выбрал группу один раз — и дальше расписание можно посмотреть прямо в тг за пару нажатий.",
           "Бот показывает расписание на вчера, сегодня и завтра, а также позволяет посмотреть замены, найти преподавателя или аудиторию. Для многих это просто удобнее сайта. Telegram и так постоянно открыт, поэтому отдельную вкладку с расписанием открывать не приходится",

@@ -23,6 +23,7 @@ export const ui = {
     age: { one: "год", few: "года", many: "лет", other: "лет" },
     projects: {
       live: "Открыть сайт",
+      bot: "Открыть бота",
       code: "Код",
       more: "Подробнее",
       all: "Все проекты подробно",
@@ -85,6 +86,7 @@ export const ui = {
     age: { one: "year", few: "years", many: "years", other: "years" },
     projects: {
       live: "Open site",
+      bot: "Open bot",
       code: "Code",
       more: "Read more",
       all: "All projects in detail",
