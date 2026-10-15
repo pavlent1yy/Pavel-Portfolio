@@ -2,11 +2,13 @@ import { site } from "@/config/site";
 import type { Content } from "@/content/types";
 import type { Ui } from "@/i18n/ui";
 import { HandNote } from "../HandNote";
-import { GithubIcon, MailIcon, TelegramIcon } from "../Icons";
+import { FlIcon, FreelanceIcon, GithubIcon, KworkIcon, MailIcon, TelegramIcon } from "../Icons";
 import { ResumeButton } from "../ResumeButton";
 import { Section } from "../Section";
 import { T } from "../T";
 import styles from "./Contact.module.css";
+
+const marketplaceIcons = { kwork: KworkIcon, fl: FlIcon, freelance: FreelanceIcon };
 
 export function Contact({ contact, ui }: { contact: Content["contact"]; ui: Ui }) {
   const { telegram, email, github } = site.contacts;
@@ -48,6 +50,24 @@ export function Contact({ contact, ui }: { contact: Content["contact"]; ui: Ui }
         </ul>
         {site.resume && <HandNote text={contact.note} arrow="left" className={styles.note} />}
       </div>
+
+      <fieldset className={styles.marketplaces}>
+        <legend className={styles.caption}>{ui.marketplaces}</legend>
+        <ul className={styles.links}>
+          {site.marketplaces.map((id) => {
+            const { name, url } = site.contacts[id];
+            const Icon = marketplaceIcons[id];
+            return (
+              <li key={id}>
+                <a className="btn btn-ghost btn-small" href={url} target="_blank" rel="noreferrer">
+                  <Icon />
+                  {name}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </fieldset>
     </Section>
   );
 }

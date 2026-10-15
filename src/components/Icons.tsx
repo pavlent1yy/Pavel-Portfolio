@@ -43,6 +43,27 @@ export const LinkedinIcon = ({ className }: IconProps) => (
   </svg>
 );
 
+export const KworkIcon = ({ className }: IconProps) => (
+  <svg {...base} className={className}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <path d="M9 7.5v9M15 10.5l-6 3.5M11.3 12.7l3.9 3.8" />
+  </svg>
+);
+
+export const FlIcon = ({ className }: IconProps) => (
+  <svg {...base} className={className}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <path d="M9.5 16.5v-7c0-1.4.7-2 2-2M7.5 11h4M15 7.5v7.5c0 1 .5 1.5 1.5 1.5" />
+  </svg>
+);
+
+export const FreelanceIcon = ({ className }: IconProps) => (
+  <svg {...base} className={className}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <path d="M9 16.5v-7c0-1.4.7-2 2-2M7 11h4M14 16.5V11m0 2c.6-1.4 1.6-2 3-2" />
+  </svg>
+);
+
 export const SparkIcon = ({ className }: IconProps) => (
   <svg {...base} className={className}>
     <path d="M12 3c.5 4.5 2.5 6.5 7 7-4.5.5-6.5 2.5-7 7-.5-4.5-2.5-6.5-7-7 4.5-.5 6.5-2.5 7-7ZM19 16v4M17 18h4" />

@@ -13,8 +13,12 @@ export const site = {
     telegram: { handle: "@pavlentiyy1", url: "https://t.me/pavlentiyy1" },
     email: "phuharev@gmail.com",
     github: { handle: "pavlent1yy", url: "https://github.com/pavlent1yy" },
+    kwork: { name: "Kwork", url: "https://kwork.ru/user/phuharev" },
+    fl: { name: "FL.ru", url: "https://www.fl.ru/users/phuharev/portfolio/" },
+    freelance: { name: "Freelance.ru", url: "https://freelance.ru/PHUHAREV" },
     vk: { url: "" },
     linkedin: { url: "" },
   },
-  presence: ["telegram", "vk", "github", "linkedin"] as const,
+  marketplaces: ["kwork", "fl", "freelance"] as const,
+  presence: ["telegram", "kwork", "fl", "freelance", "vk", "github", "linkedin"] as const,
 };

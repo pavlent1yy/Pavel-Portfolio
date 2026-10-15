@@ -2,7 +2,7 @@ import { site } from "@/config/site";
 import type { Content } from "@/content/types";
 import type { Locale } from "@/i18n/config";
 import type { Ui } from "@/i18n/ui";
-import { GithubIcon, LinkedinIcon, TelegramIcon, VkIcon } from "../Icons";
+import { FlIcon, FreelanceIcon, GithubIcon, KworkIcon, LinkedinIcon, TelegramIcon, VkIcon } from "../Icons";
 import { Landscape } from "../Landscape";
 import { LocalTime } from "../LocalTime";
 import { T } from "../T";
@@ -10,6 +10,9 @@ import styles from "./Hero.module.css";
 
 const networks = {
   telegram: { name: "Telegram", Icon: TelegramIcon },
+  kwork: { name: site.contacts.kwork.name, Icon: KworkIcon },
+  fl: { name: site.contacts.fl.name, Icon: FlIcon },
+  freelance: { name: site.contacts.freelance.name, Icon: FreelanceIcon },
   vk: { name: "VK", Icon: VkIcon },
   github: { name: "GitHub", Icon: GithubIcon },
   linkedin: { name: "LinkedIn", Icon: LinkedinIcon },

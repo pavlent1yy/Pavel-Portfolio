@@ -34,6 +34,22 @@
   overflow-wrap: anywhere;
 }
 
+.marketplaces {
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  margin: 1.75rem 0 0;
+  padding: 0.5rem 1rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+}
+
+.caption {
+  padding: 0 0.5rem;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
 .note {
   font-size: 1.6rem;
 }
