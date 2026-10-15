@@ -19,12 +19,20 @@ const commits = [
   [1130, 280],
 ];
 
-export function Landscape({ note }: { note: Text }) {
+export function Landscape({
+  note,
+  className = "",
+  viewBox = "0 -70 1600 630",
+}: {
+  note?: Text;
+  className?: string;
+  viewBox?: string;
+}) {
   return (
-    <div className={styles.landscape}>
+    <div className={`${styles.landscape} ${className}`}>
       <svg
         className={styles.svg}
-        viewBox="0 -70 1600 630"
+        viewBox={viewBox}
         preserveAspectRatio="xMidYMax slice"
         role="img"
         aria-hidden="true"
@@ -156,9 +164,11 @@ export function Landscape({ note }: { note: Text }) {
           d="M0 500C220 480 420 470 620 488S980 506 1180 492S1500 478 1600 486V560H0Z"
         />
 
-        <foreignObject x="820" y="250" width="230" height="110">
-          <HandNote text={note} arrow="down-right" animated className={styles.note} />
-        </foreignObject>
+        {note && (
+          <foreignObject x="820" y="250" width="230" height="110">
+            <HandNote text={note} arrow="down-right" animated className={styles.note} />
+          </foreignObject>
+        )}
       </svg>
     </div>
   );
