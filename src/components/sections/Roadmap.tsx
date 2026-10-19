@@ -4,6 +4,7 @@ import { HandNote } from "../HandNote";
 import { Section } from "../Section";
 import { T } from "../T";
 import styles from "./Roadmap.module.css";
+import { RoadmapAutoOpen } from "./RoadmapAutoOpen";
 
 const VISIBLE_UNTIL = 2023;
 
@@ -44,7 +45,8 @@ export function Roadmap({ roadmap, ui }: { roadmap: Content["roadmap"]; ui: Ui }
         ))}
       </ol>
 
-      <details className={styles.more}>
+      <RoadmapAutoOpen target="roadmap-more" />
+      <details id="roadmap-more" className={styles.more}>
         <summary className={styles.toggle}>
           <span className={styles.showMore}>{ui.roadmap.more}</span>
           <span className={styles.showLess}>{ui.roadmap.less}</span>
