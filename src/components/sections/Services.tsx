@@ -46,6 +46,23 @@ export function Services({ services, extra, projects, ui, lang }: Props) {
                 </span>
               )}
             </p>
+            {service.extras && service.extras.length > 0 && (
+              <details className={styles.extras}>
+                <summary>{ui.services.extras}</summary>
+                <ul>
+                  {service.extras.map((option, j) => (
+                    <li key={j}>
+                      <span>
+                        <T v={option.name} />
+                      </span>
+                      <span className={styles.extraPrice}>
+                        <T v={option.price} />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
           </li>
         ))}
       </ul>
