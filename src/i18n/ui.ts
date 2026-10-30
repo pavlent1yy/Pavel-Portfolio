@@ -50,6 +50,7 @@ export const ui = {
       case: "Пример",
       study: "учебный проект",
       extras: "Можно добавить",
+      kwork: "Заказать на Kwork",
       other: "Не нашли свою задачу? Опишите её в Telegram, я скажу, возьмусь ли и сколько это будет стоить",
     },
     roadmap: {
@@ -114,6 +115,7 @@ export const ui = {
       case: "Example",
       study: "study project",
       extras: "Add-ons",
+      kwork: "Order on Kwork",
       other: "Didn't find your task? Describe it on Telegram and I'll tell you if I can take it and what it will cost",
     },
     roadmap: {

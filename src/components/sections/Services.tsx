@@ -22,9 +22,16 @@ export function Services({ services, extra, projects, ui, lang }: Props) {
                 <T v={service.title} />
               </h3>
               <span className={styles.dots} aria-hidden="true" />
-              <p className={styles.price}>
-                <T v={service.price} />
-              </p>
+              <div className={styles.priceBox}>
+                <p className={styles.price}>
+                  <T v={service.price} />
+                </p>
+                {service.kwork && (
+                  <a className={styles.kwork} href={service.kwork} target="_blank" rel="noreferrer">
+                    {ui.services.kwork}
+                  </a>
+                )}
+              </div>
             </div>
             <p className={styles.text}>
               <T v={service.text} />

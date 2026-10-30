@@ -134,3 +134,25 @@
   border-bottom: 1px dashed var(--line);
   color: var(--text-muted);
 }
+
+.priceBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .priceBox {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.kwork {
+  color: var(--accent-strong);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}

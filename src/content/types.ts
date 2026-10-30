@@ -33,6 +33,7 @@ export type Service = {
   includes: Text[];
   price: Text;
   time: Text;
+  kwork?: string;
   extras?: { name: Text; price: Text }[];
   cases: { slug: string; study?: boolean }[];
 };
