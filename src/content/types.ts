@@ -42,6 +42,7 @@ export type SkillGroup = { title: Text; items: Text[] };
 
 export type Milestone = {
   year: string;
+  projectGroup?: { title: Text; slugs: string[] };
   items: { title: Text; text: Text }[];
   note?: Text;
 };

@@ -28,7 +28,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Projects projects={content.projects} ui={ui} lang={lang} />
         <Skills skills={content.roadmap.skills} ui={ui} />
         <Faq faq={content.faq} ui={ui} />
-        <Roadmap roadmap={content.roadmap} ui={ui} />
+        <Roadmap roadmap={content.roadmap} ui={ui} projects={content.projects.items} />
         <Contact contact={content.contact} ui={ui} />
       </main>
       <Footer lang={lang} colophon={content.colophon} />

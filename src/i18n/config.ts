@@ -2,7 +2,7 @@ export const locales = ["ru", "en"] as const;
 
 export type Locale = (typeof locales)[number];
 
-export const enabledLocales: readonly Locale[] = ["ru"];
+export const enabledLocales: readonly Locale[] = ["ru", "en"];
 
 export const defaultLocale: Locale = "ru";
 

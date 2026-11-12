@@ -8,7 +8,7 @@ export const site = {
     : "http://localhost:3000",
   timeZone: "Europe/Moscow",
   birthDate: "2007-08-15",
-  resume: "",
+  resume: "https://docs.google.com/document/d/1Rja8YhJe9oFsKYJAf2gVRoIuQF7SJrnVf89JB5sNJ6o/view",
   contacts: {
     telegram: { handle: "@pavlentiyy1", url: "https://t.me/pavlentiyy1" },
     email: "phuharev@gmail.com",

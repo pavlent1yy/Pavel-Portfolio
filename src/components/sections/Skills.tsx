@@ -29,7 +29,11 @@ export function Skills({ skills, ui }: { skills: Content["roadmap"]["skills"]; u
           </div>
           <div className={styles.group}>
             <h3 className={styles.groupTitle}>{ui.roadmap.side}</h3>
-            <TechList items={skills.side} variant="dashed" />
+            <ul className={styles.experience}>
+              {skills.side.map((item, i) => (
+                <li key={i}><T v={item} /></li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export function LangSwitch({ target, path, full, short }: Props) {
   const go = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     document.cookie = `lang=${target}; path=/; max-age=31536000; SameSite=Lax`;
-    router.push(`${href}${window.location.hash}`);
+    router.push(href, { scroll: false });
   };
 
   return (
